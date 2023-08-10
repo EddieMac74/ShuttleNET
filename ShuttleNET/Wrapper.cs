@@ -8,6 +8,27 @@ namespace ShuttleNET
     /// </summary>
     public sealed class Contour
     {
+        /// FOR 64 Bit version ensure the "ShuttleSDK64.dll" is in the same directory as your exe file. Uncomment the following...
+
+        // -----------------Start of 64 Bit Signature --------------------
+        
+        // [DllImport("ShuttleSDK64.dll", CallingConvention = CallingConvention.StdCall, EntryPoint = "Shuttle_Register_Callback_Global")]
+        // private static extern uint _Shuttle_RegisterCallback_Global_Msg(MulticastDelegate shuttleproc, ushort type, ushort devno);
+
+        // [DllImport("ShuttleSDK64.dll", CallingConvention = CallingConvention.StdCall, EntryPoint = "Shuttle_Register_Callback")]
+        // private static extern uint _Shuttle_RegisterCallback_Msg(MulticastDelegate shuttleproc, ushort type, ushort devno);
+
+        // [DllImport("ShuttleSDK64.dll", CallingConvention = CallingConvention.StdCall, EntryPoint = "Shuttle_Unregister_Callback")]
+        // private static extern int _Shuttle_UnregisterCallback_Msg(ushort type, ushort devno);
+
+        //------------------ End 64 Bit Signatures ------------------------ 
+        
+
+
+        /// For 32 Bit version ensure the "ShuttleSDK.dll" is in the same directory as your exe file. Uncomment the following...
+        
+        // -----------------Start of 32 Bit Signature --------------------
+             
         [DllImport("ShuttleSDK.dll", CallingConvention = CallingConvention.StdCall, EntryPoint = "_Shuttle_Register_Callback_Global@12")]
         private static extern uint _Shuttle_RegisterCallback_Global_Msg(MulticastDelegate shuttleproc, ushort type, ushort devno);
 
@@ -17,6 +38,9 @@ namespace ShuttleNET
         [DllImport("ShuttleSDK.dll", CallingConvention = CallingConvention.StdCall, EntryPoint = "_Shuttle_Unregister_Callback@8")]
         private static extern int _Shuttle_UnregisterCallback_Msg(ushort type, ushort devno);
 
+        //------------------ End 64 Bit Signatures ------------------------ 
+
+        
         private delegate void ShuttleCallback(uint @event, byte status, ushort type, ushort devno);
 
         private static ShuttleCallback callback;
