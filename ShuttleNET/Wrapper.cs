@@ -38,7 +38,7 @@ namespace ShuttleNET
         [DllImport("ShuttleSDK.dll", CallingConvention = CallingConvention.StdCall, EntryPoint = "_Shuttle_Unregister_Callback@8")]
         private static extern int _Shuttle_UnregisterCallback_Msg(ushort type, ushort devno);
 
-        //------------------ End 64 Bit Signatures ------------------------ 
+        //------------------ End 32 Bit Signatures ------------------------ 
 
         
         private delegate void ShuttleCallback(uint @event, byte status, ushort type, ushort devno);
